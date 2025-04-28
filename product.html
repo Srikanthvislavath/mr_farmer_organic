@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Mr Farmer Organic</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="images/logo.png" alt="Mr Farmer Organic Logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cart.html">Cart <span id="cart-count">(0)</span></a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="product-page">
+    <div class="product-image">
+        <img src="images/turmeric-250g.jpg" alt="Turmeric Powder">
+    </div>
+    <div class="product-details">
+        <h2>Organic Turmeric Powder</h2>
+        <p>Hand-Harvested, 100% Organic, Rich in Curcumin</p>
+        <p>₹199 for 250g</p>
+        <button onclick="addToCart('Organic Turmeric Powder', 199)">Add to Cart</button>
+        <button onclick="window.location.href='cart.html'">Buy Now</button>
+    </div>
+</main>
+
+<footer>
+    <p>© 2025 Mr Farmer Organic</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
