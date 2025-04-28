@@ -12,6 +12,14 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+.logo{
+    
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 header .logo img {
     height: 50px;
 }
@@ -26,17 +34,48 @@ nav ul li a {
     color: white;
     text-decoration: none;
 }
-.hero img {
-    width: 100%;
-    height: auto;
+.hero{
+    /* position: absolute; */
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
-.hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+.images{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+.hero_image{
+    width: 200px;
+    height: 200px;
+    
+}
+ 
+.btn {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #1B5A29;
     color: white;
+    border: none;
+    border-radius: 5px;
 }
+.btn:hover {
+    background-color: #D47D00; 
+}
+.hero-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    gap: -40px;
+}
+
 .about-us {
     padding: 40px;
     text-align: center;
@@ -53,7 +92,8 @@ button {
     border-radius: 5px;
 }
 button:hover {
-    background-color: #D47D00;
+    background-color: #1B5A29;
+    
 }
 footer {
     background-color: #1B5A29;
