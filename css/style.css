@@ -6,6 +6,9 @@ body {
     background-color: #f9f9f9;
 }
 header {
+    
+    width: 100%;
+    top: 0%;
     background-color: #1B5A29;
     padding: 15px 20px;
     display: flex;
@@ -75,10 +78,18 @@ nav ul li a {
     color: black;
     gap: -40px;
 }
-
+.about-us img{
+    height: 100px;
+    width: 150px;
+}
 .about-us {
+
     padding: 40px;
     text-align: center;
+}
+.product-page img{
+    height: 150px;
+    width: 150px;
 }
 .product-page, .cart-page, .login-page {
     padding: 40px;

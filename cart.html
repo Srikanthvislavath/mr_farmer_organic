@@ -1,39 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Cart | Mr Farmer Organic</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart | Mr Organic Farmer</title>
+  <style>
+    /* --- Your CSS --- */
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: #f4f9f4; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
+    header { background-color: #fff; padding: 20px; text-align: center; border-bottom: 1px solid #ddd; }
+    .logo img { height: 60px; }
+    .logo h2 { margin-top: 10px; color: #2e7d32; }
+    nav ul { list-style: none; padding: 0; text-align: center; margin-top: 15px; }
+    nav ul li { display: inline; margin: 0 15px; }
+    nav ul li a { text-decoration: none; color: #333; font-weight: 600; }
+    nav ul li a:hover { color: #2e7d32; }
+    .cart-page { flex: 1; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; }
+    .cart-page h2 { font-size: 32px; color: #2e7d32; margin-bottom: 20px; }
+    #cart-items { background-color: #ffffff; padding: 30px; width: 100%; max-width: 600px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); margin-bottom: 30px; }
+    #cart-items .cart-item { display: flex; align-items: center; justify-content: space-between; margin: 10px 0; }
+    #cart-items img { width: 50px; height: 50px; object-fit: cover; border-radius: 5px; }
+    #cart-items .item-details { flex-grow: 1; margin-left: 20px; }
+    #cart-items p { font-size: 18px; }
+    .cart-summary { background-color: #ffffff; padding: 20px; width: 100%; max-width: 600px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); display: flex; justify-content: space-between; align-items: center; }
+    #cart-total { font-size: 20px; font-weight: 600; color: #2e7d32; }
+    .cart-summary button { padding: 12px 25px; background-color: #2e7d32; color: #fff; font-size: 16px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; }
+    .cart-summary button:hover { background-color: #1b5e20; }
+    footer { background-color: #fff; text-align: center; padding: 15px; border-top: 1px solid #ddd; }
+  </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">
-        <img src="images/logo.png" alt="Mr Farmer Organic Logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="product.html">Shop</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-    </nav>
+  <div class="logo">
+    <img src="Mr Farmer Organic Powder.png" alt="Mr Organic Farmer" />
+    <h2>Mr Organic Farmer</h2>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="product.html">Shop</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
 </header>
 
 <main class="cart-page">
-    <h2>Your Shopping Cart</h2>
-    <div id="cart-items"></div>
-    <div class="cart-summary">
-        <p id="cart-total">Total: ₹0</p>
-        <button onclick="checkoutCart()">Checkout</button>
-    </div>
+  <h2>Your Shopping Cart</h2>
+  <div id="cart-items">
+    <!-- Cart items will be dynamically inserted here -->
+     <img src="Pouch.png" alt="Pouch"
+  </div>
+  <div class="cart-summary">
+    <p id="cart-total">Total: ₹0</p>
+    <button onclick="checkoutCart()">Checkout</button>
+  </div>
 </main>
 
 <footer>
-    <p>© 2025 Mr Farmer Organic</p>
+  <p>© 2025 Mr Organic Farmer</p>
 </footer>
 
-<script src="js/script.js"></script>
+<script>
+  function loadCartItems() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartItemsContainer = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+
+    cartItemsContainer.innerHTML = "";
+    let total = 0;
+
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+      cartTotal.textContent = "Total: ₹0";
+      return;
+    }
+
+    cart.forEach(item => {
+      total += item.price * item.quantity;
+
+      const itemElement = document.createElement("div");
+      itemElement.classList.add("cart-item");
+
+      itemElement.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" /> <!-- Display the image -->
+        <div class="item-details">
+          <p>${item.name}</p>
+          <p>₹${item.price} × ${item.quantity}</p>
+        </div>
+        <button onclick="removeFromCart('${item.name}')">Remove</button>
+      `;
+
+      cartItemsContainer.appendChild(itemElement);
+    });
+
+    cartTotal.textContent = `Total: ₹${total}`;
+  }
+
+  function removeFromCart(productName) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart = cart.filter(item => item.name !== productName);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    loadCartItems();
+  }
+
+  function checkoutCart() {
+    alert("Checkout functionality is not implemented yet.");
+  }
+
+  // Load cart items when the page is ready
+  document.addEventListener("DOMContentLoaded", loadCartItems);
+</script>
+
 </body>
 </html>

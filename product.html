@@ -10,7 +10,8 @@
 
 <header>
     <div class="logo">
-        <img src="images/logo.png" alt="Mr Farmer Organic Logo">
+        <img src="Mr Farmer Organic Powder.png" alt="Mr Organic Farmer">
+        <h1>Mr Organic Farmer</h1>
     </div>
     <nav>
         <ul>
@@ -23,19 +24,27 @@
 
 <main class="product-page">
     <div class="product-image">
-        <img src="images/turmeric-250g.jpg" alt="Turmeric Powder">
+        <img src="Pouch.png" alt="Organic Turmeric Powder">
     </div>
     <div class="product-details">
         <h2>Organic Turmeric Powder</h2>
         <p>Hand-Harvested, 100% Organic, Rich in Curcumin</p>
-        <p>₹199 for 250g</p>
-        <button onclick="addToCart('Organic Turmeric Powder', 199)">Add to Cart</button>
-        <button onclick="window.location.href='cart.html'">Buy Now</button>
+        <p class="price">₹199 for 250g</p>
+        <p class="price">₹399 for 500g</p>
+        <p class="price">₹999 for 1kg</p>
+
+        <div class="product-buttons">
+            <button onclick="addToCart('Organic Turmeric Powder', 199)">Add to 250g</button>
+            <button onclick="addToCart('Organic Turmeric Powder', 399)">Add to 500g</button>
+            <button onclick="addToCart('Organic Turmeric Powder', 999)">Add to 1kg</button>
+            <button onclick="removeFromCart('Organic Turmeric Powder')">Remove from Cart</button>
+            <button onclick="window.location.href='cart.html'">Buy Now</button>
+        </div>
     </div>
 </main>
 
 <footer>
-    <p>© 2025 Mr Farmer Organic</p>
+    <p>© 2025 Mr Organic Farmer</p>
 </footer>
 
 <script src="js/script.js"></script>
